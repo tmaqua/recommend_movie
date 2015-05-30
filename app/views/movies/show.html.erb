@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @movie.name %>
+</p>
+
+<p>
+  <strong>Movie_url:</strong>
+  <%= @movie.movie_url %>
+</p>
+
+<p>
+  <strong>Image_url:</strong>
+  <%= @movie.image_url %>
+</p>
+<%= image_tag(@movie.image_url) %>
+
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
