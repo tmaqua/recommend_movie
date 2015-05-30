@@ -1,10 +1,9 @@
 # encoding: utf-8
 
 namespace :create_sample do
+	
+	# $ rake create_sample:create_movie
 	desc "Movieのサンプルデータ作成" #=> 説明
-
-# $ rake create_sample:create_movie
-# :environmentは超大事。ないとモデルにアクセスできない
 	task :create_movie => :environment do 
 
 		# 楽天apiにアクセス
@@ -44,5 +43,34 @@ namespace :create_sample do
 		end
 
 		print("saved sample data\n")
+	end
+
+	# $ rake create_sample:create_evaluated_movie
+	desc "評価済み映画の作成"
+	task :create_evaluated_movie => :environment do
+
+		UserMovie.destroy_all
+
+		5.times do |u|
+			# 10個分データ作成
+			10.times do |n|
+				user = User.find_by(id: u+1)
+  				movie = Movie.find_by(id: rand(30)+1)
+
+  				user_movie = user.user_movies.find_by(movie_id: movie.id)
+
+  				if user_movie
+  					user_movie.star = rand(10)+1
+      			user_movie.save
+  				else
+  					user_movie_new = UserMovie.new
+  					user_movie_new.user_id = user.id
+  					user_movie_new.movie_id = movie.id
+  					user_movie_new.star = rand(10)+1
+  					user_movie_new.save
+  				end
+			end
+		end
+		print("success\n")
 	end
 end
