@@ -1,4 +1,19 @@
 <p>
+  <strong>user_id:</strong>
+  <%= @evaluated_movie.user_id %>
+</p>
+
+<p>
+  <strong>movie_id:</strong>
+  <%= @evaluated_movie.movie_id %>
+</p>
+
+<p>
+  <strong>star:</strong>
+  <%= @evaluated_movie.star %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @movie.name %>
 </p>
@@ -15,6 +30,3 @@
 <%= image_tag(@movie.image_url) %>
 
 <br>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>

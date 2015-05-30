@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'home/index'
 
+  # test controller
+  get 'home/index'
   get 'home/show'
 
+  # show users evaluated_movies
+  resources :user_movies
+
+  # show all movies
   resources :movies
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root to: "home#index"
+  root to: "movies#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
