@@ -1,24 +1,46 @@
 class HomeController < ApplicationController
-  def index
-    @user_movies = UserMovie.all
-  end
+	include CollaborativeFiltering
 
-  def show
-    user = User.find_by(id: 1)
-  	movie = Movie.find_by(id: 3)
+	before_action :authenticate_user!, only: [:similar_user, :recommend_movie]
+  
+	def index
+		@user_movies = UserMovie.all
+	end
 
-  	user_movie = user.user_movies.find_by(movie_id: movie.id)
+	def show
+	end
 
-  	if user_movie
-  		user_movie.star = 5
-      user_movie.save
-  	else
-  		user_movie_new = UserMovie.new
-  		user_movie_new.user_id = user.id
-  		user_movie_new.movie_id = movie.id
-  		user_movie_new.star = 0
-  		user_movie_new.save
-  	end
-  end
+	def similar_user
+		prefs = create_prefs_hash
+		@matches = top_matches(prefs, current_user.id.to_s)
+		render text: @matches
+	end
 
+	def recommend_movie
+		prefs = create_prefs_hash
+		@item = get_recommendations(prefs, current_user.id.to_s)
+		render text: @item
+	end
+
+	def similar_movie
+		menu = transform_prefs(create_prefs_hash)
+		@item = top_matches(menu, params[:item])
+		render text: @item
+	end
+
+	private
+		def create_prefs_hash()
+			users = User.pluck(:id) # => [1,2,3,4,5]
+			prefs = Hash.new
+
+			users.each do |user|
+				user_movie = UserMovie.where(user_id: user)
+				evaluated_movie = Hash.new
+				user_movie.each do |movie|
+					evaluated_movie.store("#{movie.movie_id}", movie.star)
+				end
+				prefs.store("#{user}", evaluated_movie)
+			end
+		prefs
+	end
 end

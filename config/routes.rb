@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # test controller
   get 'home/index'
   get 'home/show'
+  get 'home/similar_user'
+  get 'home/recommend_movie'
+  get 'home/similar_movie/:item' => 'home#similar_movie'
 
   # show users evaluated_movies
   resources :user_movies
