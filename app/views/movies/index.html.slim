@@ -1,0 +1,19 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | Listing Movies
+    small  Optional description
+
+/! Main content
+section.content
+  .row
+    - @movies.each do |movie|
+      .col-md-3
+        .box.box-default
+          .box-header.with-border 
+            i.fa.fa-gift
+            h3.box-title = movie.name
+          .box-body
+            = link_to movie do
+              img src="#{movie.image_url}"
+

@@ -1,6 +1,14 @@
 source 'https://rubygems.org'
 
+
 gem 'devise'
+
+gem 'bower-rails'
+gem 'slim-rails'
+
+# install bootstrap's gem
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

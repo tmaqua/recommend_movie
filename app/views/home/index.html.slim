@@ -1,0 +1,23 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | All User Movies
+    small  Optional description
+
+/! Main content
+section.content
+  table
+    thead
+      tr
+        th id
+        th user_id
+        th movie_id
+        th star
+
+    tbody
+      - @user_movies.each do |user_movie|
+        tr
+          td = user_movie.id
+          td = user_movie.user_id
+          td = user_movie.movie_id
+          td = user_movie.star

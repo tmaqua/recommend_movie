@@ -1,0 +1,82 @@
+/! Main Header
+header.main-header
+  /! Logo
+  a.logo href="/" 
+    /! mini logo for sidebar mini 50x50 pixels
+    span.logo-mini
+      b f
+      /! logo for regular state and mobile devices
+    span.logo-lg
+      b f
+      | ankami
+  
+  /! Header Navbar
+  nav.navbar.navbar-static-top role="navigation" 
+    /! Sidebar toggle button
+    a.sidebar-toggle data-toggle="offcanvas" href="#" role="button" 
+      span.sr-only Toggle navigation
+    
+    /! Navbar Right Menu
+    .navbar-custom-menu
+      ul.nav.navbar-nav
+        /! User Account Menu
+        li.dropdown.user.user-menu
+          /! Menu Toggle Button
+          a.dropdown-toggle data-toggle="dropdown" href="/" 
+            /! The user image in the navbar
+            img.user-image alt=("User Image") src="/assets/user2-160x160.jpg"
+            /! hidden-xs hides the username on small devices so only the image appears.
+            span.hidden-xs Alexander Pierce
+          ul.dropdown-menu
+            /! The user image in the menu
+            li.user-header
+              img.img-circle alt="User Image" src="/assets/user2-160x160.jpg"
+              p
+                | Alexander Pierce - Web Developer
+                small Member since Nov. 2012
+            /! Menu Body
+            li.user-body
+              .col-xs-4.text-center
+                a href="#"  Followers
+              .col-xs-4.text-center
+                a href="#"  Sales
+              .col-xs-4.text-center
+                a href="#"  Friends
+            /! Menu Footer
+            li.user-footer
+              .pull-left
+                = link_to 'プロフィール変更', edit_user_registration_path, {:class => "btn btn-default btn-flat" }
+              .pull-right
+                a.btn.btn-default.btn-flat href="#"  サインアウト
+
+/! Left side column. contains the logo and sidebar
+aside.main-sidebar
+  /! sidebar: style can be found in sidebar.less
+  section.sidebar
+    /! Sidebar user panel (optional)
+    .user-panel
+      .pull-left.image
+        img.img-circle alt="User Image" src="/assets/user2-160x160.jpg"
+      .pull-left.info
+        p Alexander Pierce
+
+    /! Sidebar Menu
+    ul.sidebar-menu
+      / li.active
+      li
+        / a href="#" 
+        = link_to movies_path
+          i.fa.fa-link
+          span 映画一覧
+      li
+        = link_to user_movies_path
+          i.fa.fa-link
+          span 評価済み映画
+      li
+        = link_to home_similar_user_path
+          i.fa.fa-link
+          span 似ているユーザ
+      li
+        = link_to home_recommend_movie_path
+          i.fa.fa-link
+          span おすすめ映画

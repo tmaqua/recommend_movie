@@ -1,0 +1,13 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | Editing movie
+    small  Optional description
+
+/! Main content
+section.content
+	== render 'form'
+
+	= link_to 'Show', @movie
+	'|
+	= link_to 'Back', movies_path

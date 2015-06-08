@@ -1,0 +1,18 @@
+DOCTYPE
+
+html
+	head
+		title fankami		
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+		= javascript_include_tag 'application', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+		= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+		= stylesheet_link_tag "http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
+
+		meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'
+
+	body.skin-blue.sidebar-mini
+		.wrapper
+			= render partial: 'layouts/header'
+			.content-wrapper
+				= yield

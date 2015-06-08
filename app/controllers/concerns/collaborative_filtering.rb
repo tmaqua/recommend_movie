@@ -10,7 +10,6 @@ module CollaborativeFiltering
 		shared_items_a = shared_items_a(prefs, person1, person2)
 		return 0 if shared_items_a.size == 0
 		sum_of_squares = shared_items_a.inject(0) {|result, item|
-			# 差を二乗して加算していく
 			result + (prefs[person1][item]-prefs[person2][item])**2
 		} 
 		return 1/(1+sum_of_squares)
@@ -64,7 +63,6 @@ module CollaborativeFiltering
 			sim = __send__(similarity,prefs,person,other)
 			next if sim <= 0 # 0 以下のスコアは無視する
 			prefs[other].each do |item, val|
-				# まだ食べてないメニューの得点のみを算出する
 				if !prefs[person].keys.include?(item) || prefs[person][item] == 0
 					# 類似度 * スコアを合計する
 					totals_h[item] += prefs[other][item]*sim

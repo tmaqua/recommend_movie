@@ -1,0 +1,23 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | Show
+    small  Optional description
+
+/! Main content
+section.content
+  p
+    strong Name:
+    = @movie.name
+  p
+    strong Movie_url:
+    = @movie.movie_url
+  p
+    strong Image_url:
+    = @movie.image_url
+  br
+  img src="#{@movie.image_url}"
+
+  = link_to 'Edit', edit_movie_path(@movie)
+  '|
+  = link_to 'Back', movies_path

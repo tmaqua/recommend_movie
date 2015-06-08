@@ -1,0 +1,33 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | Show
+    small  Optional description
+
+/! Main content
+section.content
+  p
+    strong User_id:
+    = @evaluated_movie.user_id
+  p
+    strong Movie_id:
+    = @evaluated_movie.movie_id
+  p
+    strong Star:
+    = @evaluated_movie.star
+  p
+    strong Name:
+    = @movie.name
+  p
+    strong Movie_url:
+    = @movie.movie_url
+  p
+    strong Image_url:
+    = @movie.image_url
+  br
+  img src="#{@movie.image_url}"
+  br
+
+  = link_to 'Edit', edit_user_movie_path(@evaluated_movie)
+  '|
+  = link_to 'Back', user_movies_path
