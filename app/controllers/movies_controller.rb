@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
 
 	def index
 		@movies = Movie.all
+		@current_user = current_user.id
 	end
 
 	def show
@@ -18,7 +19,7 @@ class MoviesController < ApplicationController
 
 	def create
 		@movie = Movie.new(movie_params)
-		
+
 		respond_to do |format|
 			if @movie.save
 				format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
@@ -54,6 +55,12 @@ class MoviesController < ApplicationController
 		# Use callbacks to share common setup or constraints between actions.
 		def set_movie
 			@movie = Movie.find(params[:id])
+			if recommend_movie = UserMovie.find_by(user_id: current_user.id, movie_id: params[:id])
+				@recommend_movie = recommend_movie
+			else
+				@recommend_movie = UserMovie.new(user_id: current_user.id, movie_id: params[:id])
+			end
+			# @recommend_movie = UserMovie.find_by(user_id: current_user.id, movie_id: params[:id])
 		end
 
 		# Never trust parameters from the scary internet, only allow the white list through.

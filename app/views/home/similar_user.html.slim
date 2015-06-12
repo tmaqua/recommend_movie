@@ -1,0 +1,19 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | Similar User
+    small  Optional description
+
+/! Main content
+section.content
+  table
+    thead
+      tr
+        th value
+        th user_id
+
+    tbody
+      - @matches.each do |matche|
+        tr
+          td = matche[0]
+          td = matche[1]

@@ -1,0 +1,19 @@
+/! Content Header (Page header)
+section.content-header
+  h1
+    | Recommend Movie
+    small  Optional description
+
+/! Main content
+section.content
+  table
+    thead
+      tr
+        th value
+        th movie_id
+
+    tbody
+      - @items.each do |item|
+        tr
+          td = item[0]
+          td = item[1]

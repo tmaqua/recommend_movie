@@ -6,14 +6,42 @@ section.content-header
 
 /! Main content
 section.content
-  .row
-    - @movies.each do |movie|
-      .col-md-3
-        .box.box-default
-          .box-header.with-border 
-            i.fa.fa-gift
-            h3.box-title = movie.name
-          .box-body
-            = link_to movie do
-              img src="#{movie.image_url}"
+  - @movies.each_slice(4) do |mv1, mv2, mv3, mv4|
+    .row
+      - if mv1
+        .col-md-3
+          .box.box-default
+            .box-header.with-border
+              i.fa.fa-gift
+              h3.box-title = mv1.id
+            .box-body
+              = link_to mv1 do
+                img src="#{mv1.image_url}"
+      - if mv2
+        .col-md-3
+          .box.box-default
+            .box-header.with-border
+              i.fa.fa-gift
+              h3.box-title = mv2.id
+            .box-body
+              = link_to mv2 do
+                img src="#{mv2.image_url}"
+      - if mv3
+        .col-md-3
+          .box.box-default
+            .box-header.with-border
+              i.fa.fa-gift
+              h3.box-title = mv3.id
+            .box-body
+              = link_to mv3 do
+                img src="#{mv3.image_url}"
+      - if mv4
+        .col-md-3
+          .box.box-default
+            .box-header.with-border
+              i.fa.fa-gift
+              h3.box-title = mv4.id
+            .box-body
+              = link_to mv4 do
+                img(src="#{mv4.image_url}")
 

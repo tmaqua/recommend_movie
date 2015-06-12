@@ -1,18 +1,17 @@
-= form_for @movie do |f|
-  - if @movie.errors.any?
+= form_for @recommend_movie do |f|
+  - if @recommend_movie.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@movie.errors.count, "error")} prohibited this movie from being saved:"
+      h2 = "#{pluralize(@recommend_movie.errors.count, "error")} prohibited this movie from being saved:"
       ul
-        - @movie.errors.full_messages.each do |message|
+        - @recommend_movie.errors.full_messages.each do |message|
           li = message
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.label :star
+    = f.number_field :star
   .field
-    = f.label :movie_url
-    = f.text_field :movie_url
-  .field
-    = f.label :image_url
-    = f.text_field :image_url
+    = f.hidden_field :movie_id 
+  / .field
+  /   = f.label :image_url
+  /   = f.text_field :image_url
   .actions = f.submit

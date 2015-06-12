@@ -3,13 +3,30 @@ class UserMoviesController < ApplicationController
 	before_action :authenticate_user!, only: [:index, :show, :edit, :update]
 
 	def index
-		@evaluated_movies = UserMovie.where(user_id: current_user.id)
+		@evaluated_movies = UserMovie.where(user_id: current_user.id).order(:movie_id)
+		# user = User.find_by(id: current_user.id)
+		# @movies = user.movies
 	end
 
 	def show
 	end
 
 	def edit
+	end
+
+	def create
+		@user_movie = UserMovie.new(evaluated_movie_params)
+		@user_movie.user_id = current_user.id
+
+		respond_to do |format|
+			if @user_movie.save
+				format.html { redirect_to @user_movie, notice: 'Star was successfully created.' }
+				format.json { render :show, status: :ok, location: @evaluated_movie }
+			else
+				format.html { render :edit }
+				format.json { render json: @user_movie.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def update
@@ -33,6 +50,10 @@ class UserMoviesController < ApplicationController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def evaluated_movie_params
-			params.require(:user_movie).permit(:star)
+			params.require(:user_movie).permit(:star, :movie_id)
 		end
+
+		# def user_movie_params
+		# 	params.require(:user_movie).permit(:star)
+		# end
 end

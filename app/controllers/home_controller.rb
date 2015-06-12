@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 	include CollaborativeFiltering
 
 	before_action :authenticate_user!, only: [:similar_user, :recommend_movie]
-  
+
 	def index
 		@user_movies = UserMovie.all
 	end
@@ -13,19 +13,16 @@ class HomeController < ApplicationController
 	def similar_user
 		prefs = create_prefs_hash
 		@matches = top_matches(prefs, current_user.id.to_s)
-		render text: @matches
 	end
 
 	def recommend_movie
 		prefs = create_prefs_hash
-		@item = get_recommendations(prefs, current_user.id.to_s)
-		render text: @item
+		@items = get_recommendations(prefs, current_user.id.to_s)
 	end
 
 	def similar_movie
 		menu = transform_prefs(create_prefs_hash)
-		@item = top_matches(menu, params[:item])
-		render text: @item
+		@items = top_matches(menu, params[:item])
 	end
 
 	private
