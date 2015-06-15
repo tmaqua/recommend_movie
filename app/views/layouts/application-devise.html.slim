@@ -2,7 +2,7 @@ DOCTYPE
 
 html
 	head
-		title fankami		
+		title fankami-devise		
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
@@ -12,8 +12,12 @@ html
 		= stylesheet_link_tag "http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 		meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'
 
-	body.skin-blue.sidebar-mini
-		.wrapper
-			= render partial: 'layouts/header'
-			.content-wrapper
-				= yield
+	body.login-page
+		.login-box
+			.login-logo
+      		a href="#" 
+      			b Admin
+      			| LTE
+      	.login-box-body
+      		p.login-box-msg Sign in to start your session
+      		== yield

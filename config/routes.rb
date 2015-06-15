@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
 
   # test controller
   get 'home/index'
@@ -13,6 +13,11 @@ Rails.application.routes.draw do
 
   # show all movies
   resources :movies
+
+  # devise controllers
+  devise_for :users, :controllers => {
+    # :sessions => 'users/sessions'
+  }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
