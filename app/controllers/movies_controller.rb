@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
 	def index
 		@movies = Movie.all
 		@current_user = current_user.id
+		# puts current_user
 	end
 
 	def show

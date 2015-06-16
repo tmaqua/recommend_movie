@@ -25,5 +25,8 @@ module RecommendMovie
 
     # テンプレートエンジンをslimに
     config.generators.template_engine = :slim
+
+    # fonts パス追加
+    # config.assets.paths << "#{Rails}/vendor/assets/fonts"
   end
 end

@@ -11,13 +11,34 @@ class HomeController < ApplicationController
 	end
 
 	def similar_user
-		prefs = create_prefs_hash
-		@matches = top_matches(prefs, current_user.id.to_s)
+		@similar_users = Array.new
+		if UserMovie.find_by(id: current_user.id)
+			prefs = create_prefs_hash
+			matches = top_matches(prefs, current_user.id.to_s)
+			matches.each do |user|
+				temp = Hash.new
+				temp[:value] = user[0]
+				temp[:username] = User.find_by(id: user[1]).username
+				@similar_users.push(temp)
+			end
+		end
+		@similar_users
 	end
 
 	def recommend_movie
 		prefs = create_prefs_hash
-		@items = get_recommendations(prefs, current_user.id.to_s)
+		items = get_recommendations(prefs, current_user.id.to_s)
+		@recommend_movies = Array.new
+		items.each do |item|
+			temp = Hash.new
+			movie = Movie.find_by(id: item[1])
+			temp[:value] = item[0]
+			temp[:movie_id] = movie.id
+			temp[:image_url] = movie.image_url
+			temp[:name] = movie.name
+			@recommend_movies.push(temp)
+		end
+		@recommend_movies
 	end
 
 	def similar_movie

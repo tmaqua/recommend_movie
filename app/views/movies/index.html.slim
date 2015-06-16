@@ -13,7 +13,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = mv1.id
+              = link_to mv1 do
+                h3.box-title = mv1.name
             .box-body
               = link_to mv1 do
                 img src="#{mv1.image_url}"
@@ -22,7 +23,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = mv2.id
+              = link_to mv2 do
+                h3.box-title = mv2.name
             .box-body
               = link_to mv2 do
                 img src="#{mv2.image_url}"
@@ -31,7 +33,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = mv3.id
+              = link_to mv3 do
+                h3.box-title = mv3.name
             .box-body
               = link_to mv3 do
                 img src="#{mv3.image_url}"
@@ -40,7 +43,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = mv4.id
+              = link_to mv4 do
+                h3.box-title = mv4.name
             .box-body
               = link_to mv4 do
                 img(src="#{mv4.image_url}")

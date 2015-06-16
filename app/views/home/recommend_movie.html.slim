@@ -6,14 +6,85 @@ section.content-header
 
 /! Main content
 section.content
-  table
-    thead
-      tr
-        th value
-        th movie_id
+  - index = 1
+  - @recommend_movies.each_slice(3) do |mv1, mv2, mv3|
+    .row
+      - if mv1
+        .col-md-4
+          .box.box-default
+            .box-header.with-border
+              h3.box-title = mv1[:name]
+            .box-body.no-padding
+              .row
+                .col-md-5
+                  .pad.box-pane-right.bg-aqua style="min-height:150"
+                    .description-block.margin-bottom
+                      h1 = index
+                      span.description-text = "#{mv1[:value].round(3)} p"
+                .col-md-7
+                  .pad style="min-height:150"
+                    span
+                      img src="#{mv1[:image_url]}"
+        - index = index +1
+      - if mv2
+        .col-md-4
+          .box.box-default
+            .box-header.with-border
+              h3.box-title = mv2[:name]
+            .box-body.no-padding
+              .row
+                .col-md-5
+                  .pad.box-pane.bg-aqua style="min-height:150"
+                    .description-block.margin-bottom
+                      h1 = index
+                      span.description-text = "#{mv2[:value].round(3)} p"
+                .col-md-7
+                  .pad style="min-height:150"
+                    span
+                      img src="#{mv2[:image_url]}"
+        - index = index +1
+      - if mv3
+        .col-md-4
+          .box.box-default
+            .box-header.with-border
+              span
+                h3.box-title = mv3[:name]
+            .box-body.no-padding
+              .row
+                .col-md-5
+                  .pad.box-pane.bg-aqua style="min-height:150"
+                    .description-block.margin-bottom
+                      h1 = index
+                      span.description-text = "#{mv3[:value].round(3)} p"
+                .col-md-7
+                  .pad style="min-height:150"
+                    span
+                      img src="#{mv3[:image_url]}" 
+        - index = index +1 
 
-    tbody
-      - @items.each do |item|
-        tr
-          td = item[0]
-          td = item[1]
+
+
+
+
+
+
+
+
+  / table
+  /   thead
+  /     tr
+  /       th rank
+  /       th movie_id
+  /       th movie_name
+  /       th movie_url
+  /       th value
+
+  /   tbody
+  /     - @recommend_movies.each.with_index(1) do |recommend_movie, index|
+  /       tr
+  /         td = index
+  /         td = recommend_movie[:movie_id]
+  /         td = recommend_movie[:name]
+  /         td = recommend_movie[:image_url]
+  /         td = recommend_movie[:value].round(3)
+

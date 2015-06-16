@@ -6,14 +6,56 @@ section.content-header
 
 /! Main content
 section.content
-  table
-    thead
-      tr
-        th value
-        th user_id
-
-    tbody
-      - @matches.each do |matche|
-        tr
-          td = matche[0]
-          td = matche[1]
+  .row
+    - if @similar_users[0]
+      .col-md-3.col-md-offset-1
+        .small-box.bg-aqua
+          .inner
+            h3 1
+            h2 = @similar_users[0][:username]
+          .icon 
+            i.ion.ion-heart
+          .small-box-footer
+            = "#{@similar_users[0][:value].round(3)} p"
+    - if @similar_users[1]
+      .col-md-3
+        .small-box.bg-aqua
+          .inner
+            h3 2
+            h4 = @similar_users[1][:username]
+          .icon
+            i.ion.ion-heart
+          .small-box-footer
+            = "#{@similar_users[1][:value].round(3)} p"
+    - if @similar_users[2]
+      .col-md-3
+        .small-box.bg-aqua
+          .inner
+            h3 3
+            h4 = @similar_users[2][:username]
+          .icon
+            i.ion.ion-heart
+          .small-box-footer
+            = "#{@similar_users[2][:value].round(3)} p"
+  - if @similar_users[3]
+    .row
+      .col-md-9.col-md-offset-1
+        .box.box-warning-aqua
+          .box-header.with-border
+            h3.box-title Others
+            box-tools.pull-right
+              button.btn.btn-box-tool data-widget="collapse"
+                i.fa.fa-minus
+          .box-body
+            table.table
+              thead
+                tr
+                  th rank
+                  th name
+                  th point
+              tbody
+                - @similar_users[3, @similar_users.size].each.with_index(4) do |user, index|
+                  tr
+                    td = index
+                    td = user[:username]
+                    td = user[:value].round(3)

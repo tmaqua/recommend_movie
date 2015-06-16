@@ -14,7 +14,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = movie1.name
+              = link_to mv1 do
+                h3.box-title = movie1.name
             .box-body
               = link_to mv1 do
                 img src="#{movie1.image_url}"
@@ -24,7 +25,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = movie2.name
+              = link_to mv2 do
+                h3.box-title = movie2.name
             .box-body
               = link_to mv2 do
                 img src="#{movie2.image_url}"
@@ -34,7 +36,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = movie3.name
+              = link_to mv3 do
+                h3.box-title = movie3.name
             .box-body
               = link_to mv3 do
                 img src="#{movie3.image_url}"
@@ -44,26 +47,8 @@ section.content
           .box.box-default
             .box-header.with-border
               i.fa.fa-gift
-              h3.box-title = movie4.name
+              = link_to mv4 do
+                h3.box-title = movie4.name
             .box-body
               = link_to mv4 do
                 img(src="#{movie4.image_url}")
-  / table
-  /   thead
-  /     tr
-  /       th id
-  /       th user_id
-  /       th movie_id
-  /       th star
-  /       th
-  /       th
-
-  /   tbody
-  /     - @evaluated_movies.each do |evaluated_movie|
-  /       tr
-  /         td = evaluated_movie.id
-  /         td = evaluated_movie.user_id
-  /         td = evaluated_movie.movie_id
-  /         td = evaluated_movie.star
-  /         td = link_to 'Show', evaluated_movie
-  /         td = link_to 'Edit', edit_user_movie_path(evaluated_movie)

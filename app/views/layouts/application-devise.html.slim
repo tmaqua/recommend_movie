@@ -9,15 +9,17 @@ html
 		/! Font Awesome
 		= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
 		/! ionicons
-		= stylesheet_link_tag "http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
+		/ = stylesheet_link_tag "http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css"
 		meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'
 
-	body.login-page
-		.login-box
-			.login-logo
-      		a href="#" 
-      			b Admin
-      			| LTE
-      	.login-box-body
-      		p.login-box-msg Sign in to start your session
-      		== yield
+	= yield
+	/ body.login-page
+	/ 	- if notice
+	/ 		p.alert.alert-success = notice
+	/ 	- if alert
+	/ 		p.alert.alert-danger = alert
+	/ 	.login-box
+	/ 		.login-logo 
+	/ 			b Fankami
+	/ 		= yield
+			

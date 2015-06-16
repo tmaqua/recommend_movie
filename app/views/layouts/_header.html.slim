@@ -15,6 +15,8 @@ header.main-header
     /! Sidebar toggle button
     a.sidebar-toggle data-toggle="offcanvas" href="#" role="button" 
       span.sr-only Toggle navigation
+
+    - user =  User.find_by(id: current_user)
     
     /! Navbar Right Menu
     .navbar-custom-menu
@@ -26,22 +28,22 @@ header.main-header
             /! The user image in the navbar
             img.user-image alt=("User Image") src="/assets/user2-160x160.jpg"
             /! hidden-xs hides the username on small devices so only the image appears.
-            span.hidden-xs Alexander Pierce
+            span.hidden-xs = user.username
+            / span.hidden-xs Alexander Pierce
           ul.dropdown-menu
             /! The user image in the menu
             li.user-header
               img.img-circle alt="User Image" src="/assets/user2-160x160.jpg"
-              p
-                | Alexander Pierce - Web Developer
-                small Member since Nov. 2012
+              p = user.username
+              small = user.email
             /! Menu Body
-            li.user-body
-              .col-xs-4.text-center
-                a href="#"  Followers
-              .col-xs-4.text-center
-                a href="#"  Sales
-              .col-xs-4.text-center
-                a href="#"  Friends
+            / li.user-body
+            /   .col-xs-4.text-center
+            /     a href="#"  Followers
+            /   .col-xs-4.text-center
+            /     a href="#"  Sales
+            /   .col-xs-4.text-center
+            /     a href="#"  Friends
             /! Menu Footer
             li.user-footer
               .pull-left
@@ -61,7 +63,7 @@ aside.main-sidebar
       .pull-left.image
         img.img-circle alt="User Image" src="/assets/user2-160x160.jpg"
       .pull-left.info
-        p Alexander Pierce
+        p = user.username
 
     /! Sidebar Menu
     ul.sidebar-menu
