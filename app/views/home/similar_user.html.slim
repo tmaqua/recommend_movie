@@ -1,11 +1,17 @@
 /! Content Header (Page header)
 section.content-header
   h1
-    | Similar User
+    | 似ているユーザ
     small  Optional description
 
 /! Main content
 section.content
+  - if @similar_users.size == 0
+    .row
+      .col-md-6
+        .callout.callout-warning
+          h4 映画がまだ評価されていません
+          p 映画を評価して似ているユーザ・おすすめ映画を見つけましょう
   .row
     - if @similar_users[0]
       .col-md-3.col-md-offset-1

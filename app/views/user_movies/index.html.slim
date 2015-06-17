@@ -1,11 +1,17 @@
 /! Content Header (Page header)
 section.content-header
   h1
-    | Current User Movies
+    | 評価済み映画
     small  Optional description
 
 /! Main content
 section.content
+  - if @evaluated_movies.size == 0
+    .row
+      .col-md-6
+        .callout.callout-warning
+          h4 映画がまだ評価されていません
+          p 映画を評価して似ているユーザ・おすすめ映画を見つけましょう
   - @evaluated_movies.each_slice(4) do |mv1, mv2, mv3, mv4|
     .row
       - if mv1
