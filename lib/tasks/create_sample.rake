@@ -1,4 +1,5 @@
 # encoding: utf-8
+require 'net/http'
 
 namespace :create_sample do
 	
