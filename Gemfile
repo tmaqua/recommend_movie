@@ -15,6 +15,7 @@ gem 'rails', '4.2.0'
 
 gem 'sqlite3', groups: %w(test development), require: false
 gem 'pg', groups: %w(production), require: false
+gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
