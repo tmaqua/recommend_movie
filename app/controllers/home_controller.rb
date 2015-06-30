@@ -13,8 +13,10 @@ class HomeController < ApplicationController
 	def similar_user
 		@similar_users = Array.new
 		if UserMovie.find_by(id: current_user.id)
+			user_num = User.pluck(:id).size
 			prefs = create_prefs_hash
-			matches = top_matches(prefs, current_user.id.to_s)
+			matches = top_matches(prefs, current_user.id.to_s, user_num)
+			@testvalue = matches
 			matches.each do |user|
 				temp = Hash.new
 				temp[:value] = user[0]
